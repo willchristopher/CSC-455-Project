@@ -7,7 +7,7 @@ from detector import analyze_url, load_model
 
 
 def read_urls(csv_path, phishing_label):
-    # Convert each dataset's label convention to True for phishing.
+    #Converts each dataset's label convention to True for phishing.
     with csv_path.open(encoding="utf-8-sig", newline="") as source:
         rows = csv.DictReader(source)
         columns = {name.strip().lower(): name for name in rows.fieldnames or []}
@@ -21,7 +21,7 @@ def read_urls(csv_path, phishing_label):
 
 
 def is_test_site(site):
-    # The first hash byte gives a repeatable split of about 80% train and 20% test.
+    #The first hash byte gives a repeatable split of about 80% train and 20% test.
     return sha256(site.encode("ascii")).digest()[0] < 51
 
 

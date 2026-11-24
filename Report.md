@@ -26,7 +26,7 @@ We ran unit tests for parsing, scoring, and counting errors. We then ran the sav
 
 ## Results
 
-Across both test sets, accuracy increased from 82.55% with logistic regression to **87.21%** with the decision tree. The tree flagged **2,635 of 46,538 legitimate links** (5.66%), down from 5,194 (11.16%). It missed **5,893 of 20,122 phishing links** (29.29%), down from 6,437 (31.99%).
+Across both test sets, accuracy increased from 82.55% with logistic regression to 87.21% with the decision tree. The tree flagged 2,635 of 46,538 legitimate links** (5.66%), down from 5,194 (11.16%). It missed 5,893 of 20,122 phishing links (29.29%), down from 6,437 (31.99%).
 
 On PhiUSIIL, accuracy was 85.14%, with 859 false positives (3.22%) and 5,778 false negatives (32.14%). The tree caught 569 more phishing links and raised 511 more false alarms. On URL-Phish v2, accuracy rose from 77.56% to 91.40%, with 1,776 false positives (8.95%) and 115 false negatives (5.36%). The tree raised 3,070 fewer false alarms there and missed 25 more phishing links.
 
@@ -36,7 +36,7 @@ The model can only see the address. Of the 5,778 phishing links the tree missed 
 
 ## Conclusion
 
-The decision tree reduced both types of errors across the combined tests. We would use the score and the displayed site as a prompt to verify the destination, similar to how we reviewed alerts in the Snort lab.
+The decision tree reduced both types of errors across the combined tests. We would use the score and the displayed site as a prompt to verify the destination.
 
 ## Running the Program
 
@@ -50,4 +50,4 @@ We used scikit-learn for training and the Public Suffix List for identifying sit
 
 ## AI Acknowledgment
 
-AI was used more for brainstorming an approach to this project. When thinking about how we would build a machine-learning model, we asked Google Gemini about ways of going about this and ultimately landed on what we have today. It did not write the code/test it, but was guided us by having references of what setting up a decision tree would look like in Python.
+AI was used for brainstorming an approach to this project. When thinking about how we would build a machine-learning model, we asked Google Gemini about ways of going about this and ultimately landed on what we have today. It guided us by having references of what setting up a decision tree would look like in Python, and the use of IntelliSense/Copilot within VS Code was used as we were typing the code.

@@ -36,7 +36,7 @@ def parse_link(raw_url):
     if re.search(r"[\s\\\x00-\x1f\x7f]", url) or len(url) > 16384:
         raise ValueError("Enter one URL of up to 16,384 characters without spaces or backslashes.")
 
-    # urlsplit separates the destination from user info, the path, and the query.
+    #urlsplit separates the destination from user info, the path, and the query.
     try:
         parts = urlsplit(url)
         raw_hostname = parts.hostname
@@ -63,7 +63,7 @@ def parse_link(raw_url):
 
 
 def extract_features(raw_url):
-    # Training and the GUI use the same URL measurements in the same order.
+    #Training and the GUI use the same URL measurements in the same order.
     parts, hostname, is_ip = parse_link(raw_url)
     name, suffix = (hostname, "") if is_ip else split_site(hostname)
     site = f"{name}.{suffix}" if name and suffix else hostname
@@ -72,7 +72,7 @@ def extract_features(raw_url):
     path = parts.path if parts.path.strip("/") else ""
     query = parts.query
 
-    # Log lengths give very long paths and queries less influence.
+    #Log lengths give very long paths and queries less influence.
     features = (
         len(hostname), len(name), subdomains, sum(c.isdigit() for c in hostname),
         hostname.count("-"), int("xn--" in hostname), int(is_ip),
@@ -92,7 +92,7 @@ class PhishingModel:
     threshold: float
 
     def score(self, features):
-        # Start at the root and follow the learned checks to a leaf.
+        #Start at the root and follow the learned checks to a leaf.
         node = self.nodes[0]
         while "feature" in node:
             branch = "left" if features[node["feature"]] <= node["cutoff"] else "right"
